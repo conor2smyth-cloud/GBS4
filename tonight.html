@@ -1,0 +1,25 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Tonight's Event – GBS</title><link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head>
+<body><header class="header"><div class="inner"><div class="nav-left"><a href="tonight.html#sip">Sip</a><a href="tonight.html#tip">Tip</a><a href="tonight.html#celebrate">Celebrate</a></div><img class="logo-small" src="conor.jpg" alt="GBS logo"><div class="nav-right"><a href="recipes.html">Recipes</a><a href="menus.html">Menus</a><a href="services.html">Services</a><a href="contact.html">Contact</a><a href="gallery.html">Gallery</a></div><div class="now">Now Playing: [Song] • Up Next: [Next]</div></div></header><main class="main container grid"><aside class="left-nav"><nav class="side-nav"><a href="#sip">Sip</a><a href="#tip">Tip</a><a href="#celebrate">Celebrate</a></nav></aside>
+<section>
+<div id="sip" class="section box" tabindex="-1"><h1>Sip</h1><p>Drinks available tonight. Choose a category from the mini menu.</p>
+<div class="grid" style="grid-template-columns:220px 1fr;gap:16px"><div class="box" style="position:sticky;top:120px"><h3>Menu</h3><nav class="side-nav"><a href="#cocktails">Cocktails</a><a href="#draft">Draft</a><a href="#spirits">Spirits</a><a href="#mixers">Mixers</a><a href="#bottles">Bottles</a><a href="#wine">Wine</a></nav></div>
+<div><div id="cocktails" class="section box"><h2>Cocktails</h2><p>Old Fashioned, Margarita, Espresso Martini…</p></div>
+<div id="draft" class="section box"><h2>Draft</h2><p>Guinness, Heineken, IPA…</p></div>
+<div id="spirits" class="section box"><h2>Spirits</h2><p>Jameson, Grey Goose, Hendrick’s…</p></div>
+<div id="mixers" class="section box"><h2>Mixers</h2><p>Tonic, Soda, Cola, Lemonade, Ginger Ale…</p></div>
+<div id="bottles" class="section box"><h2>Bottles</h2><p>Lager, Ciders, Zero‑Alcohol options…</p></div>
+<div id="wine" class="section box"><h2>Wine</h2><p>House Red, House White, Prosecco…</p></div></div></div></div>
+<div id="tip" class="section box" tabindex="-1" style="margin-top:20px"><h1>Tip</h1><p>All tips are appreciated and shared equally amongst serving staff.</p><div class="qr"><img src="qr.svg" alt="Tip QR Code" width="220" height="220"></div><div class="brand-row"><img src="revolut.svg" alt="Revolut"><img src="applepay.svg" alt="Apple Pay"></div><div class="hero-img-placeholder" style="margin-top:16px"></div><div style="display:flex;gap:10px;justify-content:center;margin-top:14px"><a class="button" href="#">Tip via Revolut</a><a class="button" href="#">Tip via Apple Pay</a></div></div>
+<div id="celebrate" class="section box" tabindex="-1" style="margin-top:20px"><h1>Tonight's Event</h1><p>Celebrate with us — request a tune and share your moments live.</p><p><a class="button" href="#">Request a tune (Spotify Jam)</a></p><div class="grid" style="grid-template-columns:220px 1fr;gap:16px"><div class="gallery-rail" id="rail"></div><div><div class="upload-zone" id="dropzone">Click or drop photos here to upload</div><div class="box" style="margin-top:14px"><h3>Gallery (Approved)</h3><div id="thumbs" style="display:flex;flex-wrap:wrap;gap:10px"></div></div></div></div></div>
+</section>
+<aside class="right-nav"><nav class="side-nav"><a href="recipes.html">Recipes</a><a href="menus.html">Menus</a><a href="services.html">Services</a><a href="contact.html">Contact</a><a href="gallery.html">Gallery</a></nav></aside></main>
+<div class="footer">© 2025 GBS Bartending</div>
+<script>
+const drop=document.getElementById('dropzone'),thumbs=document.getElementById('thumbs'),rail=document.getElementById('rail');
+function handleFiles(files){[...files].forEach(file=>{if(!file.type.startsWith('image/'))return;const img=document.createElement('img');img.src=URL.createObjectURL(file);img.style.width='100%';img.style.borderRadius='10px';img.style.border='1px solid #333';thumbs.appendChild(img.cloneNode());rail.appendChild(img);});}
+drop.addEventListener('click',()=>{const i=document.createElement('input');i.type='file';i.accept='image/*';i.multiple=true;i.onchange=e=>handleFiles(e.target.files);i.click();});
+drop.addEventListener('dragover',e=>{e.preventDefault();drop.style.borderColor='rgba(255,26,26,.5)';});
+drop.addEventListener('dragleave',()=>{drop.style.borderColor='rgba(255,255,255,.18)';});
+drop.addEventListener('drop',e=>{e.preventDefault();drop.style.borderColor='rgba(255,255,255,.18)';handleFiles(e.dataTransfer.files);});
+setInterval(()=>{rail.scrollTop=(rail.scrollTop+2)%(rail.scrollHeight-rail.clientHeight+1)},60);
+</script></body></html>
